@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="org.maishameds.programmingchallenge.EditActivity"
+    tools:showIn="@layout/activity_edit">
+
+
+    <RelativeLayout
+        android:id="@+id/main_edit_layout"
+        android:layout_width="368dp"
+        android:background="@color/maishaCoral"
+        android:layout_height="495dp"
+        tools:layout_editor_absoluteY="8dp"
+        android:padding="@dimen/padding"
+        tools:layout_editor_absoluteX="8dp"
+        tools:ignore="MissingConstraints">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:id="@+id/name_label"
+            android:text="Name"
+            android:textSize="@dimen/text_size"
+            android:textColor="@color/maishaGold"
+            android:layout_height="wrap_content" />
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="wrap_content"
+            android:id="@+id/et_name_textInput_Layout"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true">
+
+            <EditText
+                android:layout_width="@dimen/edit_text_width"
+                android:id="@+id/et_name"
+                android:layout_marginLeft="100dp"
+                android:background="#FFF"
+                android:layout_alignLeft="@+id/name_label"
+                android:layout_height="wrap_content" />
+
+        </android.support.design.widget.TextInputLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:id="@+id/brand_label"
+            android:text="Brand"
+            android:textSize="@dimen/text_size"
+            android:textColor="@color/maishaGold"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/et_brand_text_input_layout"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="wrap_content"
+            android:id="@+id/et_brand_text_input_layout"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/et_name_textInput_Layout"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true">
+        <EditText
+            android:layout_width="@dimen/edit_text_width"
+            android:id="@+id/et_brand"
+            android:layout_below="@+id/et_name"
+            android:layout_marginTop="5dp"
+            android:layout_marginLeft="100dp"
+            android:background="#FFF"
+            android:layout_alignLeft="@+id/name_label"
+            android:layout_height="wrap_content" />
+</android.support.design.widget.TextInputLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:id="@+id/price_label"
+            android:text="Price"
+            android:textSize="@dimen/text_size"
+            android:textColor="@color/maishaGold"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/unit_type_text_input_layout"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"></TextView>
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="wrap_content"
+            android:id="@+id/price_text_input_layout"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/et_brand_text_input_layout"
+            android:layout_alignLeft="@+id/et_name_textInput_Layout"
+            android:layout_alignStart="@+id/et_name_textInput_Layout">
+        <EditText
+            android:layout_width="@dimen/edit_text_width"
+            android:id="@+id/et_price"
+            android:layout_below="@+id/et_brand"
+            android:layout_marginTop="5dp"
+            android:layout_marginLeft="100dp"
+            android:background="#FFF"
+            android:layout_alignLeft="@+id/name_label"
+            android:layout_height="wrap_content" />
+
+        </android.support.design.widget.TextInputLayout>
+        <TextView
+            android:layout_width="wrap_content"
+            android:id="@+id/quantity_unit_type"
+            android:text="UnitType"
+            android:layout_below="@+id/price_label"
+            android:textSize="@dimen/text_size"
+            android:textColor="@color/maishaGold"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/unit_type_text_input_layout"></TextView>
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="wrap_content"
+            android:id="@+id/unit_type_text_input_layout"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/price_text_input_layout"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true">
+
+            <EditText
+                android:id="@+id/et_unitType"
+                android:layout_width="@dimen/edit_text_width"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+id/name_label"
+                android:layout_below="@+id/et_price"
+                android:layout_marginLeft="100dp"
+                android:layout_marginTop="5dp"
+                android:background="#FFF" />
+
+        </android.support.design.widget.TextInputLayout>
+        <Button
+            android:layout_width="@dimen/button_size"
+            android:text="Edit"
+            android:id="@+id/btn_edit"
+            android:layout_below="@+id/price_text_input_layout"
+            android:layout_marginTop="40dp"
+            android:layout_centerHorizontal="true"
+            android:layout_height="40dp" />
+
+
+    </RelativeLayout>
+
+</android.support.constraint.ConstraintLayout>
+

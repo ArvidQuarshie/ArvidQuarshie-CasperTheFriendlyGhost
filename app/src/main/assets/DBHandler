@@ -1,0 +1,180 @@
+package database;
+
+/**
+ * Created by android on 8/2/17.
+ */
+
+import android.content.ContentValues;
+import android.content.Context;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
+
+import java.util.ArrayList;
+
+import model.Article;
+
+
+public class DBHandler extends SQLiteOpenHelper {
+
+    //Database name
+    public static String DATABASE_NAME = "NewsDb";
+    //Database version
+    private static final int DATABASE_VERSION = 1;
+
+    //Tables
+    private static final String ARTICLE_TABLE = "Article";
+    //Columns
+    private static final String KEY_ID = "id";
+    private static final String ARTICLE_CONTENT = "Article";
+    private static final String DESCRIPTION = "description";
+    private static final String TITLE = "title";
+
+
+    //Create Tables
+    private static final String CREATE_TABLE_TABLE_TUESDAY_TIMETABLE_CONTENT = "CREATE TABLE " + ARTICLE_TABLE
+            + "(" + KEY_ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
+            + ARTICLE_CONTENT + " TEXT,"
+            + DESCRIPTION + " TEXT, "
+            + TITLE + "TEXT);";
+
+
+    public DBHandler(Context context) {
+        super(context, DATABASE_NAME, null, DATABASE_VERSION);
+        Log.d("table", CREATE_TABLE_TABLE_TUESDAY_TIMETABLE_CONTENT);
+
+    }
+
+    @Override
+    public void onCreate(SQLiteDatabase db) {
+//        db.execSQL(CREATE_TABLE_TABLE_TUESDAY_TIMETABLE_CONTENT);
+
+        db.execSQL(" CREATE TABLE " + ARTICLE_TABLE + " (" +
+                ARTICLE_CONTENT + " TEXT NOT NULL, " +
+                DESCRIPTION + " TEXT NOT NULL, " +
+                TITLE + " TEXT NOT NULL );" );
+
+    }
+
+    @Override
+    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+        db.execSQL("DROP TABLE IF EXISTS ' " + ARTICLE_TABLE + " ' " );
+
+        // create new tables
+        onCreate(db);
+    }
+
+
+    //Save data from Db new Version
+
+    public long createInsert(String article, String description,
+                             String Title) {
+        // TODO Auto-generated method stub
+
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        ContentValues cv = new ContentValues();;
+        cv.put(ARTICLE_CONTENT, article);
+        cv.put(DESCRIPTION, description);
+        cv.put(TITLE, Title);
+
+
+
+        return db.insert(ARTICLE_TABLE, null, cv);
+
+    }
+
+    /**
+     * fetch data from db
+     * @return arraylist
+     */
+
+//    public ArrayList<TuesdayTimetableContentModel> getDataTuesdayTimetableContent() {
+//        ArrayList<TuesdayTimetableContentModel> TuesdayTimetableContentModelArrayList =
+//                new ArrayList<TuesdayTimetableContentModel>();
+//
+//        // String selectQuery = ("SELECT  * FROM " + TABLE_TUESDAY_TIMETABLE_CONTENT );
+//
+//        SQLiteDatabase db = this.getReadableDatabase();
+//
+//         final Cursor cursor = db.rawQuery("SELECT  * FROM " + TABLE_TUESDAY_TIMETABLE_CONTENT , null);
+//        Log.v("db", DatabaseUtils.dumpCursorToString(cursor));
+//
+//        // looping through all rows and adding to list
+//            if (cursor.moveToFirst()) do {
+//                TuesdayTimetableContentModel tuesdayTimetableContentModel = new TuesdayTimetableContentModel();
+//                //get values
+//                tuesdayTimetableContentModel.setId(cursor.getInt(cursor.getColumnIndex(KEY_ID)));
+//                tuesdayTimetableContentModel.setTuesdayTimetableSubject(cursor.getString(cursor.getColumnIndex(KEY_TUESDAY_TIMETABLE_SUBJECT)));
+//                tuesdayTimetableContentModel.setTuesdayTimeTableClassName(cursor.getString(cursor.getColumnIndex(KEY_TUESDAY_TIMETABLE_CLASS_NAME)));
+//                tuesdayTimetableContentModel.setTuesdayStartTime(cursor.getString(cursor.getColumnIndex(KEY_TUESDAY_START_TIME)));
+//                tuesdayTimetableContentModel.setTuesdayEndTime(cursor.getString(cursor.getColumnIndex(KEY_TUESDAY_END_TIME)));
+//
+//                // adding to TuesdayTimetableContent list
+//                TuesdayTimetableContentModelArrayList.add(tuesdayTimetableContentModel);
+//            } while (cursor.moveToNext());
+//
+//        Log.v("arraylist:", String.valueOf(TuesdayTimetableContentModelArrayList.size()));
+//
+//        return TuesdayTimetableContentModelArrayList;
+//
+//    }
+
+
+    public ArrayList<String> getData() {
+        ArrayList<String> articleArrayList = new ArrayList<>();
+
+        String selectQuery = "SELECT  * FROM " + ARTICLE_TABLE;
+        SQLiteDatabase db  = this.getReadableDatabase();
+        Cursor cursor      = db.rawQuery(selectQuery, null);
+        String[] data      = null;
+        ArrayList<String> newData = new ArrayList<>();
+
+        if (cursor.moveToFirst()) {
+            do {
+                // get the data into array, or class variable
+
+                articleArrayList.add(cursor.getString(cursor.getColumnIndex(ARTICLE_CONTENT)));
+                Log.v("dbHandler", articleArrayList.toString());
+            } while (cursor.moveToNext());
+        }
+        cursor.close();
+
+        return articleArrayList;
+
+    }
+
+
+//    public void updateTuesdayTimetableContent(int id, String TuesdayTimetableSubject, String TuesdayTimeTableClassName ,
+//                                              String TuesdayStartTime, String TuesdayEndTime) {
+//        SQLiteDatabase db = this.getWritableDatabase();
+//
+//        // updating values in TuesdayTimetableContent table
+//        ContentValues values = new ContentValues();
+//        values.put(KEY_TUESDAY_TIMETABLE_SUBJECT, TuesdayTimetableSubject);
+//        values.put(KEY_TUESDAY_TIMETABLE_CLASS_NAME, TuesdayTimeTableClassName);
+//        values.put(KEY_TUESDAY_START_TIME, TuesdayStartTime);
+//        values.put(KEY_TUESDAY_END_TIME, TuesdayEndTime);
+//        db.update(TABLE_TUESDAY_TIMETABLE_CONTENT, values, KEY_ID + " = ?", new String[]{String.valueOf(id)});
+//
+//    }
+
+//    public void deleteTuesdayTimetableContent(int id) {
+//
+//
+//        SQLiteDatabase db = this.getWritableDatabase();
+//        // delete row in TABLE_TUESDAY_TIMETABLE_CONTENT table based on id
+//        //deleting from TABLE_TUESDAY_TIMETABLE_CONTENTtable
+//        db.delete(TABLE_TUESDAY_TIMETABLE_CONTENT, KEY_ID + " = ?",new String[]{String.valueOf(id)});
+//    }
+
+    // closing database
+    public void closeDB() {
+        SQLiteDatabase db = this.getReadableDatabase();
+        if (db != null && db.isOpen())
+            db.close();
+    }
+
+}
+

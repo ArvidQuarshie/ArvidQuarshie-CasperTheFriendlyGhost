@@ -1,0 +1,54 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#fff">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:id="@+id/container"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:id="@+id/title"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="wrap_content"
+            android:id="@+id/title_txt"
+            android:textSize="20sp"
+            android:text="Welcome to Casper The Friendly App"
+            android:layout_centerInParent="true"
+            android:textAlignment="center"
+            android:textStyle="bold"
+            android:layout_height="wrap_content" />
+
+        <pl.droidsonroids.gif.GifImageView
+            android:id="@+id/gifSplash"
+            android:layout_width="match_parent"
+            android:layout_height="400dp"
+            android:background="@drawable/gif"
+            android:layout_below="@+id/title_txt"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="5dp"
+
+            android:visibility="visible" />
+
+    </RelativeLayout>
+
+
+
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="100dp"
+            android:layout_height="wrap_content">
+
+
+
+        </RelativeLayout>
+
+
+</RelativeLayout>
+</RelativeLayout>
