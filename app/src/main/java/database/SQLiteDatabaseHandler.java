@@ -61,6 +61,10 @@ public class SQLiteDatabaseHandler extends SQLiteOpenHelper {
 
     }
 
+    /*
+    Saved Data in the Table
+     */
+
     public void insertData(GhostObject ghostObject){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
@@ -92,7 +96,9 @@ public class SQLiteDatabaseHandler extends SQLiteOpenHelper {
 
         return i;
     }
-
+/*
+Fetch Data from the db
+ */
 
     public ArrayList<GhostObject> displayData(){
 

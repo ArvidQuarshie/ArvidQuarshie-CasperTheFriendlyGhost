@@ -50,6 +50,20 @@ public class SecondFragment extends Fragment {
 btnSave.setOnClickListener(new View.OnClickListener() {
     @Override
     public void onClick(View view) {
+
+        if(etName.getEditableText().toString().isEmpty()){
+
+            Toast.makeText(getContext(), "Please complete filling the form" , Toast.LENGTH_LONG).show();
+
+        }
+
+        if(etDesscription.getEditableText().toString().isEmpty()){
+            Toast.makeText(getContext(), "Please complete filling the form" , Toast.LENGTH_LONG).show();
+
+        }
+
+
+
         saveDream();
     }
 });
