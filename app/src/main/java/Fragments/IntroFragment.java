@@ -22,7 +22,7 @@ import pl.droidsonroids.gif.GifImageView;
  * Created by android on 11/3/17.
  */
 
-public class FirstFragment extends Fragment {
+public class IntroFragment extends Fragment {
 
     private TextView txtusd,txteur;
     private SQLiteDatabaseHandler db;

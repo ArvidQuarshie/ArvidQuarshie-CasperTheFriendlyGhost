@@ -1,67 +1,95 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#fff">
-    <RelativeLayout
+    android:background="@color/colorAccent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:fab="http://schemas.android.com/tools">
+    <android.support.v7.widget.CardView
         android:layout_width="match_parent"
-        android:id="@+id/container"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true">
-        <RelativeLayout
+        android:layout_height="match_parent"
+        android:layout_margin="2dp">
+        <LinearLayout
             android:layout_width="match_parent"
-            android:id="@+id/title"
-            android:layout_height="wrap_content">
-            <TextView
-                android:layout_width="wrap_content"
-                android:id="@+id/title_txt"
-                android:textSize="20sp"
-                android:textAlignment="center"
-                android:text="Hi Ghost Please , Fill out the Details
-below"
-                android:layout_centerInParent="true"
-                android:textStyle="bold"
-                android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
-        </RelativeLayout>
-
-
-
+            <pl.droidsonroids.gif.GifImageView
+                android:id="@+id/gifSplash"
+                android:layout_width="match_parent"
+                android:layout_height="160dp"
+                android:background="@drawable/dream"
+                android:scaleType="centerCrop"
+                android:visibility="visible" />
 
             <RelativeLayout
                 android:layout_width="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:layout_marginTop="150dp"
+                android:layout_marginTop="20dp"
                 android:layout_height="wrap_content">
 
 
-                <EditText
+                <android.support.design.widget.TextInputLayout
+                    android:id="@+id/dreamName"
+                    android:layout_width="match_parent"
+                    android:hint="Name of Your Dream"
+                    android:layout_height="wrap_content">
+                  <EditText
                     android:layout_width="match_parent"
                     android:id="@+id/Name"
+                      android:textSize="13sp"
                     android:hint="Give your Dream A Name !"
                     android:layout_height="wrap_content" />
+                </android.support.design.widget.TextInputLayout>
 
+                <android.support.design.widget.TextInputLayout
+                    android:id="@+id/dreamDescribe"
+                    android:hint="Describe Your Dream"
+                    android:layout_below="@+id/dreamName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
                 <EditText
                     android:layout_width="match_parent"
-                    android:layout_below="@+id/Name"
+                    android:layout_below="@+id/dreamName"
+                    android:textSize="13sp"
                     android:hint="Describe your dream Please !"
                     android:id="@+id/Description"
                     android:layout_height="wrap_content" />
 
-                <Button
-                    android:layout_width="wrap_content"
-                    android:id="@+id/btn_save"
-                    android:layout_below="@+id/Description"
-                    android:layout_centerInParent="true"
-                    android:text="Save Your Dream"
-                    android:layout_height="wrap_content" />
-
+</android.support.design.widget.TextInputLayout>
 
 
 
             </RelativeLayout>
 
 
-    </RelativeLayout>
+        </LinearLayout>
+
+        <!--<com.github.clans.fab.FloatingActionButton-->
+            <!--android:id="@+id/fab"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:background="#2891db"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_gravity="bottom|right"-->
+            <!--android:layout_marginBottom="8dp"-->
+            <!--android:tooltipText="Click to Save Your Dream"-->
+            <!--android:layout_marginRight="8dp"-->
+         <!--android:layout_marginTop="500dp"-->
+            <!--fab:fab_colorNormal="#2891db"-->
+            <!--fab:fab_colorPressed="#000"-->
+            <!--fab:fab_colorRipple="@color/app_ripple"/>-->
+
+
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/fab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:tooltipText="Save"
+            android:background="@drawable/fab_add"
+            android:layout_gravity="bottom|end"
+            android:layout_margin="@dimen/fab_margin"
+            app:srcCompat="@android:drawable/ic_dialog_email" />
+    </android.support.v7.widget.CardView>
+
 </RelativeLayout>
+
+

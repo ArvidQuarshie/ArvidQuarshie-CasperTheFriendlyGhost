@@ -15,9 +15,11 @@ import com.example.android.casperthefriendlyghost.R;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.ThreadPoolExecutor;
 
 import Models.GhostObject;
 import database.SQLiteDatabaseHandler;
+import es.dmoral.toasty.Toasty;
 import pl.droidsonroids.gif.GifImageView;
 
 /**
@@ -55,14 +57,19 @@ public class SearchFragment extends Fragment {
 
                     Log.v("@Description", obj.getDescription());
 
+                    savedDataMap.put(obj.getName(),obj.getDescription());
 
                     if(savedDataMap.containsKey(search.getText().toString())){
 
-                        name.setText(search.getText().toString());
+                        Log.v("@Dreamsinsideif", obj.getName());
+                        Description.setText(savedDataMap.get(search.getText().toString()));
+                        Toasty.success(getContext(),"Dream Found").show();
 
+                    }else{
+                        Toasty.error(getContext(),"Dream not Found").show();
                     }
 
-                    savedDataMap.put(obj.getName(),obj.getDescription());
+
 
 
                 }
@@ -75,4 +82,5 @@ public class SearchFragment extends Fragment {
 
 
     }
+
 }

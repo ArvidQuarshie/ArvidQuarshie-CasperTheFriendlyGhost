@@ -1,3 +1,7 @@
 <resources>
-    <string name="app_name">CasperTheFriendlyGhost</string>
+    <string name="app_name">Casper</string>
+    <string name="intro"> Dear Ghost welcome to Incentro Kenya, we created this app to help you with your nightmares. Please make sure you record all your dreams in the morning.We aim to make your after life better.</string>
+    <string name="title_activity_splash">Casper</string>
+
 </resources>
+

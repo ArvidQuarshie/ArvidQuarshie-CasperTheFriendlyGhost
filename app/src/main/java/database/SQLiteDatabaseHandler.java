@@ -55,7 +55,7 @@ public class SQLiteDatabaseHandler extends SQLiteOpenHelper {
 
     }
 
-    public void deleteItem(GhostObject ghostObject , String id){
+    public void deleteItem( String id){
         SQLiteDatabase sqLiteDatabase = getWritableDatabase();
         sqLiteDatabase.delete(TABLE_NAME,"id = ?",new String[]{id});
 
@@ -77,25 +77,36 @@ public class SQLiteDatabaseHandler extends SQLiteOpenHelper {
 
     }
 
-    public int updateData(GhostObject ghostObject ,String id){
+    public boolean updateData( String id ,String des,String name){
 
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
-        values.put(NAME, ghostObject.getName());
-        values.put(DES, ghostObject.getDescription());
+        values.put(DES,des );
+        values.put(NAME,name);
 
+        // updating row
+        db.update(TABLE_NAME, values,  "id = ?",
+                new String[] { id});
 
-        int i = db.update(TABLE_NAME, // table
-                values, // column/value
-                "id = ?", // selections
-                new String[] { id });
-
-        Log.v("@SavedId" , String.valueOf(i));
-
-        db.close();
-
-        return i;
+        return true;
     }
+
+
+     public boolean updateStory(long Id, String description){
+         SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues args = new ContentValues();
+        args.put(KEY_ID, Id);
+        args.put(DES, description);
+
+          Log.v("Update", String.valueOf(db.update(TABLE_NAME, args, KEY_ID + "=" + Id, null) > 0)) ;
+        return db.update(TABLE_NAME, args, KEY_ID + "=" + Id, null) > 0;
+
+
+      }
+
+
+
+
 /*
 Fetch Data from the db
  */
